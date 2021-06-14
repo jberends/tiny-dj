@@ -6,6 +6,8 @@ sqlparse==0.4.1
 
 # config
 django-environ
+django_extensions
+werkzeug
 
 # drf
 djangorestframework
