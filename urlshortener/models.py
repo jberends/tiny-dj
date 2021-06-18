@@ -15,7 +15,6 @@ class ShortUrl(models.Model):
     is_active = models.BooleanField(default=True)
 
     class Meta:
-
         ordering = ["-created_at"]
 
     def __str__(self):
