@@ -26,5 +26,10 @@ api_router.register(r'shorturl', ShortUrlViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    # app urls
+    path('', include('shorturl.urls')),
+
+    # api urls
     path('api/', include(api_router.urls)),
 ]

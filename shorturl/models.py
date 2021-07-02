@@ -45,11 +45,11 @@ class ShortUrl(models.Model):
 class Hit(models.Model):
     """A hit on the ShortUrl"""
     id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4(), editable=False,
+        primary_key=True, default=uuid.uuid4, editable=False,
     )
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    shorturl = models.ForeignKey(
+    short_url = models.ForeignKey(
         ShortUrl, related_name='hits', on_delete=models.CASCADE, db_index=True,
     )
-    source_ip = models.IPAddressField(blank=True, null=True)
+    source_ip = models.GenericIPAddressField(blank=True, null=True)
     meta = models.JSONField(default=dict, null=True, blank=True)
