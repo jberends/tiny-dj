@@ -14,16 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include
+from django.urls import path
 from rest_framework import routers
 
-from urlshortener.api.viewsets import UrlShortenerViewSet
+from shorturl.api.viewsets import ShortUrlViewSet
 
-router = routers.SimpleRouter()
-router.register(r'urlshortener', UrlShortenerViewSet)
+api_router = routers.SimpleRouter()
+api_router.register(r'shorturl', ShortUrlViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/', include(router.urls))
+    path('api/', include(api_router.urls)),
 ]
