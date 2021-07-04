@@ -51,5 +51,8 @@ class Hit(models.Model):
     short_url = models.ForeignKey(
         ShortUrl, related_name='hits', on_delete=models.CASCADE, db_index=True,
     )
-    source_ip = models.GenericIPAddressField(blank=True, null=True)
-    meta = models.JSONField(default=dict, null=True, blank=True)
+    remote_addr = models.GenericIPAddressField(blank=True, null=True)
+    request_meta = models.JSONField(default=dict, null=True, blank=True)
+
+    def __str__(self):
+        return f'Hit {self.short_url.short_url} on {self.created_at}'
